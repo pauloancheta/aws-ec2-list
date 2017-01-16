@@ -1,16 +1,10 @@
 require_relative 'instance'
 
 class AwsEc2List::Runner
-  attr_reader :ec2, :credentials_path, :stdout, :env
+  attr_reader :ec2
 
-  def initialize(ec2: Aws::EC2::Client.new,
-                 credentials_path: "#{Dir.home}/.aws/credentials",
-                 stdout: $stdout,
-                 env: ENV)
-    @ec2 = ec2
-    @credentials_path = credentials_path
-    @stdout = stdout
-    @env = env
+  def initialize(ec2: Aws::EC2::Client, region: 'us-east-1')
+    @ec2 = ec2.new(region: region)
   end
 
   def call
