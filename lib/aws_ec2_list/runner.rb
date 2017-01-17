@@ -1,10 +1,11 @@
 require_relative 'instance'
 
 class AwsEc2List::Runner
-  attr_reader :ec2
+  attr_reader :ec2, :stdout
 
-  def initialize(ec2: Aws::EC2::Client, region: 'us-east-1')
+  def initialize(ec2: Aws::EC2::Client, region: 'us-east-1', stdout: $stdout)
     @ec2 = ec2.new(region: region)
+    @stdout = stdout
   end
 
   def call
@@ -13,7 +14,7 @@ class AwsEc2List::Runner
       [d.project, d.stack_name, d.public_dns_name, d.launch_time, d.app_version, d.state]
     end
     data = data.insert(0, data_header)
-    puts Tabularize.it(data, :align => :left).map { |row| row.join ' | ' }
+    stdout.puts Tabularize.it(data, :align => :left).map { |row| row.join ' | ' }
   end
 
   private

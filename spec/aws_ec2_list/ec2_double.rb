@@ -10,12 +10,7 @@ class AwsEc2List::Ec2Double
   end
 
   def reservations
-    [
-      AwsEc2List::InstancesDouble.new,
-      AwsEc2List::InstancesDouble.new,
-      AwsEc2List::InstancesDouble.new,
-      AwsEc2List::InstancesDouble.new,
-    ]
+    [ AwsEc2List::InstancesDouble.new ]
   end
 end
 
