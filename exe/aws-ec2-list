@@ -2,4 +2,4 @@
 
 require "aws_ec2_list"
 
-AwsEc2List.call
+AwsEc2List.call(ARGV)
