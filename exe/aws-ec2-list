@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
 require "aws_ec2_list"
 
 AwsEc2List.call
