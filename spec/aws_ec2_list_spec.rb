@@ -19,5 +19,14 @@ describe AwsEc2List do
 webapp  | lp-webapp-prod-01 | public_dns_name | launch_time | 123h12kj    | state)
     end
   end
+
+  context "with options" do
+    before { AwsEc2List.call("--region=us-west-1", ec2: ec2, stdout: stdout) }
+
+    it "can accept options" do
+      expect(stdout.to_s).to eq %(PROJECT | STACK NAME        | PUBLIC DNS NAME | LAUNCH TIME | APP VERSION | STATE
+webapp  | lp-webapp-prod-01 | public_dns_name | launch_time | 123h12kj    | state)
+    end
+  end
 end
 
