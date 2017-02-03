@@ -5,9 +5,12 @@ require 'tabularize'
 
 module AwsEc2List
   def self.call(passed_options, options)
-    args = passed_options.split(" ").map do |option|
+    passed_options_array = passed_options.split(" ")
+
+    args = passed_options_array.map do |option|
       key, value = option.split("=")
-      {key.gsub("--", "").to_sym => value}
+      key = key.gsub("--", "").to_sym
+      {key => value}
     end
 
     Runner.new(options.merge(*args)).call
