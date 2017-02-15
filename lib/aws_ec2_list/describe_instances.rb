@@ -1,6 +1,6 @@
 require_relative 'instance'
 
-class AwsEc2List::Runner
+class AwsEc2List::DescribeInstances
   attr_reader :ec2, :stdout
 
   def initialize(ec2: Aws::EC2::Client, region: 'us-east-1', stdout: $stdout)

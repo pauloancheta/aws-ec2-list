@@ -13,7 +13,7 @@ module AwsEc2List
       {key => value}
     end
 
-    Runner.new(options.merge(*args)).call
+    DescribeInstances.new(options.merge(*args)).call
   end
 end
 
