@@ -1,8 +1,6 @@
 # Aws::Ec2::List
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/aws/ec2/list`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Get the information from your ec2 instances
 
 ## Installation
 
@@ -22,7 +20,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+AwsEc2List defaults to us-east-1
+
+```bash
+$> aws-ec2-list
+
+$> aws-ec2-list --region=us-west-1
+```
 
 ## Development
 
