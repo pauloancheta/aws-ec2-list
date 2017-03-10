@@ -7,26 +7,23 @@ describe AwsEc2List do
   let(:ec2) { AwsEc2List::Ec2Double }
   let(:region) { 'us-west-1' }
 
-  context "without options" do
-    before { AwsEc2List.call(ec2: ec2, region: region, stdout: stdout) }
-
-    it "has a version number" do
-      expect(AwsEc2List::VERSION).not_to be nil
-    end
-
-    it "prints out the ec2 instances available" do
-      expect(stdout.to_s).to eq %(PROJECT | STACK NAME        | PUBLIC DNS NAME | LAUNCH TIME | APP VERSION | STATE
-webapp  | lp-webapp-prod-01 | public_dns_name | launch_time | 123h12kj    | state)
-    end
+  def output
+    """PROJECT | STACK NAME        | PUBLIC DNS NAME | LAUNCH TIME | APP VERSION | STATE
+webapp  | lp-webapp-prod-01 | public_dns_name | launch_time | 123h12kj    | state"""
   end
 
-  context "with options" do
-    before { AwsEc2List.call("--region=us-west-1", ec2: ec2, stdout: stdout) }
+  it "has a version number" do
+    expect(AwsEc2List::VERSION).not_to be nil
+  end
 
-    it "can accept options" do
-      expect(stdout.to_s).to eq %(PROJECT | STACK NAME        | PUBLIC DNS NAME | LAUNCH TIME | APP VERSION | STATE
-webapp  | lp-webapp-prod-01 | public_dns_name | launch_time | 123h12kj    | state)
-    end
+  it "returns the instances" do
+    AwsEc2List.call(ec2: ec2, region: region, stdout: stdout)
+    expect(stdout.to_s).to eq output
+  end
+
+  it "returns the instances given a string" do
+    AwsEc2List.call(["--region=us-east-1"], ec2: ec2, stdout: stdout)
+    expect(stdout.to_s).to eq output
   end
 end
 
