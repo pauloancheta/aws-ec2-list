@@ -24,9 +24,31 @@ AwsEc2List defaults to us-east-1
 
 ```bash
 $> aws-ec2-list
-
-$> aws-ec2-list --region=us-west-1
 ```
+
+Specify a specific region with `--region` option
+
+```bash
+$> aws-ec2-list --region=us-west-2
+```
+
+Specify the columns that you would like to show.
+```bash
+$> aws-ec2-list --columns="name, project, state"
+```
+
+Just a small note, not all tags work. Currently you can only query:
+  - instance_id
+  - state
+  - private_dns_name
+  - public_dns_name
+  - instance_type
+  - launch_time
+  - name
+  - stack_name
+  - project
+  - app_version
+
 
 ## Development
 
