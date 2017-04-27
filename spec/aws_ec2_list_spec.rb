@@ -8,7 +8,7 @@ describe AwsEc2List do
   let(:region) { 'us-west-1' }
 
   def output
-    """PROJECT | STACK NAME        | PUBLIC DNS NAME | LAUNCH TIME | APP VERSION | STATE
+    """project | stack_name        | public_dns_name | launch_time | app_version | state
 webapp  | lp-webapp-prod-01 | public_dns_name | launch_time | 123h12kj    | state"""
   end
 
