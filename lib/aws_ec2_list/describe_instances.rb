@@ -36,6 +36,7 @@ class AwsEc2List::DescribeInstances
         private_dns_name: instance.private_dns_name,
         public_dns_name: instance.public_dns_name,
         instance_type: instance.instance_type,
+        image_id: instance.image_id,
         launch_time: instance.launch_time,
         tags: instance.tags
       )

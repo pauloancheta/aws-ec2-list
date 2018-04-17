@@ -7,6 +7,7 @@ class AwsEc2List::Instance
   attribute :private_dns_name, String
   attribute :public_dns_name, String
   attribute :instance_type, String
+  attribute :image_id, String
   attribute :launch_time, String
   attribute :tags, Array
 
